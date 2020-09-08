@@ -1,5 +1,6 @@
 // Simple HashTable using separate chaining
-// Soes not implement resizing
+// Does not implement resizing
+// ONLY FOR PRACTICE DO NOT USE AS IT IS INEFFECIENT
 
 function hashStringToInt(s, tableSize) {
   let hash = 17;
