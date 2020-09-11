@@ -10,21 +10,58 @@
 const largestTime = (arr) => {
   let result = '';
 
-  arr.sort((a, b) => a - b);
+  let highestLessThree = 0;
+  let highestLessFour = 0;
+  let highestLessSix = 0;
+  let last = 0;
 
-  // HOURS
-  //does it contain a 0,1,2,3?
-  // if yes, does it also contain an additional 0,1,2?
-  // if no, find the largest 1 - 9 and place that in the 0X:00 pos
+  let found = false;
 
-  // MINS
-  // out of the remaining numbers find the highest number less than 6 and place in the 00:X0 pos
-  // the remaining number goes in the 00:0X pos
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > highestLessThree && arr[i] < 3) {
+      highestLessThree = arr[i];
+      arr[i] = -1;
+    }
+  }
 
+  for (let i = 0; i < arr.length; i++) {
+    if (highestLessThree <= 0) {
+      if (arr[i] > highestLessFour && arr[i] < 4) {
+        highestLessFour = arr[i];
+        arr[i] = -1;
+      }
+    } else {
+      if (arr[i] > highestLessFour && arr[i] < 10) {
+        highestLessFour = arr[i];
+        arr[i] = -1;
+      }
+    }
+
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > highestLessSix && arr[i] < 6) {
+      highestLessSix = arr[i];
+      arr[i] = -1;
+    }
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > last) {
+      last = arr[i];
+      arr[i] = -1;
+      found = true;
+    }
+  }
+
+  result = `${highestLessThree}${highestLessFour}:${highestLessSix}${last}`;
+
+  return result;
 };
 
 
-console.log(largestTime([1, 2, 3, 4])); // '12:34'
+
+console.log(largestTime([1, 2, 3, 4])); // '23:40'
 console.log(largestTime([0, 0, 0, 0])); // '00:00'
 console.log(largestTime([5, 5, 5, 5])); // ''
 console.log(largestTime([0, 3, 9, 4])); // '04:39'
