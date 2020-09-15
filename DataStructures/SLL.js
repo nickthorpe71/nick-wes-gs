@@ -14,7 +14,7 @@ class LinkedList {
   }
 
   push(element) {
-    let node = new Node(element);
+    let node = new _Node(element);
 
     let current;
 
@@ -31,6 +31,16 @@ class LinkedList {
     }
     this.size++;
   }
+
+  print() {
+    let current = this.head;
+    let result = 'head:';
+    while (current) {
+      result += current.element + '->';
+      current = current.next;
+    }
+    console.log(result.slice(0, result.length - 2));
+  }
 }
 
 
@@ -40,3 +50,5 @@ class _Node {
     this.next = null;
   }
 }
+
+export default LinkedList;
