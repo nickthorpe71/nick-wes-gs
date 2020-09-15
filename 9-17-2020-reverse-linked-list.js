@@ -7,13 +7,15 @@ for (const i of data) {
   list.push(i);
 }
 
-list.print();
-
 /**
  * @param {ListNode} head
  * @return {ListNode}
  */
 var reverseList = function (head) {
+  let result = new LinkedList();
+
+
 
 };
+
 
