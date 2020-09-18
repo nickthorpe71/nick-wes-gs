@@ -136,3 +136,9 @@ var minCost = function(s, cost) {
 
 // Return the maximum number of edges you can remove, or return -1 if it's impossible for the graph to be fully traversed by Alice and Bob.
 
+const helperAlice = () => {
+  //given an array of the nodes and a starting point
+  //have a data structure to know which points are accessible
+
+  //loop through the array of nodes and check if they touch any point which is already accessible
+}
