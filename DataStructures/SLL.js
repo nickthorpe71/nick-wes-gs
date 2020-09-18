@@ -13,8 +13,8 @@ class LinkedList {
     this.size = 0;
   }
 
-  push(element) {
-    let node = new _Node(element);
+  push(val) {
+    let node = new _Node(val);
 
     let current;
 
@@ -36,7 +36,7 @@ class LinkedList {
     let current = this.head;
     let result = 'head:';
     while (current) {
-      result += current.element + '->';
+      result += current.val + '->';
       current = current.next;
     }
     console.log(result.slice(0, result.length - 2));
@@ -45,8 +45,8 @@ class LinkedList {
 
 
 class _Node {
-  constructor(element) {
-    this.element = element;
+  constructor(val) {
+    this.val = val;
     this.next = null;
   }
 }
