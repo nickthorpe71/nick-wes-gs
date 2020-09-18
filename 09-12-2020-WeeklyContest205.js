@@ -141,4 +141,4 @@ const helperAlice = () => {
   //have a data structure to know which points are accessible
 
   //loop through the array of nodes and check if they touch any point which is already accessible
-}
+};
