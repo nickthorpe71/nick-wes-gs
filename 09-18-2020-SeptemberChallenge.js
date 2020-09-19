@@ -5,15 +5,22 @@
 // Note that you cannot sell a stock before you buy one.
 
 var maxProfit = function(prices) {
-  let max = 0;
+  let currMin = null;
+  let maxDiff = 0;
   for(let i = 0; i < prices.length; i++){
-    for(let j = i + 1; j < prices.length; j++) {
-      if(prices[j]-[prices[i]] > max){
-        max = prices[j]-[prices[i]];
-      }
+    if(currMin === null) {
+      currMin = prices[i];
+    }
+
+    if(currMin > prices[i]){
+      currMin = prices[i];
+    }
+
+    if (prices[i] - currMin > maxDiff){
+      maxDiff = prices[i] - currMin;
     }
   }
-  return max;
+  return maxDiff;
 };
 
 console.log(maxProfit([7,1,5,3,6,4])); // 5
