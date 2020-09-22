@@ -25,7 +25,7 @@ var uniquePathsIII = function(grid) {
 
   console.log('totalZeroes', totalZeroes);
 
-  function movement(rowIndex,colIndex,zeroes) {    
+  function movement(rowIndex,colIndex,zeroes) {
     const currentIndexValue = grid[rowIndex][colIndex];
     console.log(' zeroes',zeroes);
     
