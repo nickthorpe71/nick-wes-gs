@@ -48,7 +48,7 @@ var findJudge = function (N, trust) {
   return judgeNum;
 };
 
-const findJudgeSolution = (N, trust) => {
+const findTheJudge = (N, trust) => {
   const pairsArray = [];
   for (let i = 0; i < N + 1; i++) {
     pairsArray.push(
@@ -69,7 +69,7 @@ const findJudgeSolution = (N, trust) => {
   return -1;
 };
 
-console.log(findJudgeSolution(2, [[1, 2]]));
-console.log(findJudgeSolution(2, [[1, 2], [2, 1]]));
-console.log(findJudgeSolution(4, [[1, 3], [1, 4], [2, 3], [2, 4], [4, 3]]));
-console.log(findJudgeSolution(4, [[1, 3], [1, 4], [2, 3], [3, 4], [4, 3]]));
+console.log(findTheJudge(2, [[1, 2]]));
+console.log(findTheJudge(2, [[1, 2], [2, 1]]));
+console.log(findTheJudge(4, [[1, 3], [1, 4], [2, 3], [2, 4], [4, 3]]));
+console.log(findTheJudge(4, [[1, 3], [1, 4], [2, 3], [3, 4], [4, 3]]));
