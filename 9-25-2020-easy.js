@@ -2,26 +2,9 @@
  * @param {number} n
  * @return {number}
  */
+
+// This one is 4ms faster because of converting to a string
 var subtractProductAndSum = function (n) {
-  n = '' + n + '';
-  const arr = n.split('').map(num => parseInt(num));
-
-  const product = arr.reduce((acc, num) => {
-    acc *= num;
-
-    return acc;
-  }, 1);
-
-  const sum = arr.reduce((acc, num) => {
-    acc += num;
-
-    return acc;
-  }, 0);
-
-  return product - sum;
-};
-
-var subtractProductAndSumSecond = function (n) {
   let num = n.toString().split('');
   let sum = 0;
   let product = 1;
