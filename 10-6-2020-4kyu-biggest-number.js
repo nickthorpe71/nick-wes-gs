@@ -60,11 +60,55 @@ let findPermutations = str => {
   return permutationArr;
 };
 
-// console.log(nextBigger(12)); // 21
-// console.log(nextBigger(513)); // 531
-// console.log(nextBigger(2017)); // 2071
-// console.log(nextBigger(414)); // 441
-// console.log(nextBigger(-1)); // -1
-console.log(nextBigger(9));   // -1
+// console.log(squareInt(5));
+
+// // console.log(nextBigger(12)); // 21
+// // console.log(nextBigger(513)); // 531
+// // console.log(nextBigger(2017)); // 2071
+// // console.log(nextBigger(414)); // 441
+// // console.log(nextBigger(-1)); // -1
+// console.log(nextBigger(9));   // -1
 // console.log(nextBigger(111)); // -1
 // console.log(nextBigger(531)); // -1
+
+
+// process.stdin.resume();
+// process.stdin.setEncoding('utf8');
+
+// var stdin = '';
+// process.stdin.on('data', function (chunk) {
+//   stdin += chunk;
+// }).on('end', function () {
+//   const answer = squareInt(parseInt(stdin));
+
+// });
+
+// function squareInt(n) {
+//   return n * n;
+// }
+
+function determineCodeVariations(lines) {
+  let total = 0;
+  let pairs = 0;
+
+  if (parseInt(lines) > 0)
+    total++;
+
+  // every single unique pair total++
+  // every set of unique pairs total++
+
+  for (let i = 0; i < lines.length - 1; i++) {
+    let pair = lines.slice(i, i + 2);
+    if (parseInt(lines[i] + lines[i + 1]) <= 26) {
+      if (parseInt(pair) <= 26) {
+        total++;
+        pairs++;
+      }
+    }
+  }
+
+  return total + Math.floor(pairs / 2);
+}
+
+console.log(determineCodeVariations('1224')); //5
+console.log(determineCodeVariations('122222')); 
