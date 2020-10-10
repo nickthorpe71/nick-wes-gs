@@ -8,3 +8,5 @@ function humanReadable(seconds) {
 
 
 console.log(humanReadable(69438));
+
+console.log([1, 2] * 2);
