@@ -71,7 +71,6 @@ class Graph {
     const visited = new Map();
     // const visitList = new Queue(); // need to implement queue
 
-
     visitList.add(first);
 
     while (!visitList.isEmpty()) {
