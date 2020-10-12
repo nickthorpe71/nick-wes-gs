@@ -15,6 +15,8 @@ class Graph {
     this.edgeDirection = edgeDirection;
   }
 
+  /* Basic Methods */
+
   addEdge(source, destination) {
     const sourceNode = this.addVertex(source);
     const destinationNode = this.addVertex(destination);
@@ -61,6 +63,25 @@ class Graph {
       }
     }
     return this.nodes.delete(value);
+  }
+
+  /* Search Methods */
+
+  *bfs(first) {
+    const visited = new Map();
+    // const visitList = new Queue(); // need to implement queue
+
+
+    visitList.add(first);
+
+    while (!visitList.isEmpty()) {
+      const node = visitList.remove();
+      if (node && !visited.has(node)) {
+        yield node;
+        visited.set(node);
+        node.getAdjacents().forEach(adj => visitList.add(adj));
+      }
+    }
   }
 }
 
