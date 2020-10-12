@@ -2,13 +2,70 @@
 // values are the nodes they are attached to
 
 // this is a very simple implementation of a graph without the ability to remove nodes or edges
-const primitiveGraph = {
+const simpleGraph = {
   a: ['a', 'b'],
   b: ['c'],
   c: ['d'],
   d: ['b', 'c']
 };
 
+class Graph {
+  constructor(edgeDirection = Graph.DIRECTED) {
+    this.nodes = new Map();
+    this.edgeDirection = edgeDirection;
+  }
+
+  addEdge(source, destination) {
+    const sourceNode = this.addVertex(source);
+    const destinationNode = this.addVertex(destination);
+
+    sourceNode.addAdjacent(destinationNode);
+
+    if (this.edgeDirection === Graph.UNDIRECTED) {
+      destinationNode.addAdjacent(sourceNode);
+    }
+
+    return [sourceNode, destinationNode];
+  }
+
+  removeEdge(source, destination) {
+    const sourceNode = this.nodes.get(source);
+    const destinationNode = this.nodes.get(destination);
+
+    if (sourceNode && destinationNode) {
+      sourceNode.removeAdjacent(destinationNode);
+
+      if (this.edgeDirection === Graph.UNDIRECTED) {
+        destinationNode.removeAdjacent(sourceNode);
+      }
+    }
+
+    return [sourceNode, destinationNode];
+  }
+
+  addVertex(value) {
+    if (this.nodes.has(value)) {
+      return this.nodes.get(value);
+    } else {
+      const vertex = new Node(value);
+      this.nodes.set(value, vertex);
+      return vertex;
+    }
+  }
+
+  removeVertex(value) {
+    const current = this.nodes.get(value);
+    if (current) {
+      for (const node of this.nodes.values()) {
+        node.removeAdjacent(current);
+      }
+    }
+    return this.nodes.delete(value);
+  }
+}
+
+Graph.UNDIRECTED = Symbol('directed graph'); // two-way edges
+Graph.DIRECTED = Symbol('undirected graph'); // one=way edges
 
 class Node {
   constructor(value) {
