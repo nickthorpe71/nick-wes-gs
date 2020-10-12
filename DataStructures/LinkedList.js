@@ -1,4 +1,4 @@
-const util = require('util');
+import util from 'util';
 
 /**
  * Doubly linked list that keeps track of
@@ -283,4 +283,4 @@ LinkedList.prototype.unshift = LinkedList.prototype.addFirst;
 LinkedList.prototype.shift = LinkedList.prototype.removeFirst;
 LinkedList.prototype.search = LinkedList.prototype.contains;
 
-module.exports = LinkedList;
+export default LinkedList;

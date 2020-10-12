@@ -1,3 +1,5 @@
+import Queue from './Queue.js';
+
 // keys represent each node in a graph 
 // values are the nodes they are attached to
 
@@ -67,11 +69,11 @@ class Graph {
 
   /* Search Methods */
 
-  *bfs(first) {
+  *bfs(frst) {
     const visited = new Map();
-    // const visitList = new Queue(); // need to implement queue
+    const visitList = new Queue(); // need to implement queue
 
-    visitList.add(first);
+    visitList.add(frst);
 
     while (!visitList.isEmpty()) {
       const node = visitList.remove();
@@ -113,3 +115,22 @@ class Node {
     return this.adjacents.indexOf(node) > -1;
   }
 }
+
+const graph = new Graph(Graph.UNDIRECTED);
+
+const [first] = graph.addEdge(1, 2);
+graph.addEdge(1, 3);
+graph.addEdge(1, 4);
+graph.addEdge(5, 2);
+graph.addEdge(6, 3);
+graph.addEdge(7, 3);
+graph.addEdge(8, 4);
+graph.addEdge(9, 5);
+graph.addEdge(10, 6);
+
+let bfsFromFirst = graph.bfs(first);
+
+console.log(bfsFromFirst.next().value.value); // 1
+console.log(bfsFromFirst.next().value.value); // 2
+console.log(bfsFromFirst.next().value.value); // 3
+console.log(bfsFromFirst.next().value.value); // 4

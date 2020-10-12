@@ -5,7 +5,7 @@
 function hashStringToInt(s, tableSize) {
   let hash = 17;
 
-  for (i = 0; i < s.length; i++) {
+  for (let i = 0; i < s.length; i++) {
     hash = (13 * hash * s.charCodeAt(i)) % tableSize;
   }
 

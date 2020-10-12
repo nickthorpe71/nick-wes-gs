@@ -1,4 +1,4 @@
-const LinkedList = require('../linked-lists/linked-list');
+import LinkedList from './LinkedList.js';
 
 class Queue {
   constructor() {
@@ -44,4 +44,4 @@ class Queue {
 Queue.prototype.add = Queue.prototype.enqueue;
 Queue.prototype.remove = Queue.prototype.dequeue;
 
-module.exports = Queue;
+export default Queue;
