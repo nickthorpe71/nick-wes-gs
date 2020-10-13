@@ -71,7 +71,7 @@ class Graph {
 
   *bfs(frst) {
     const visited = new Map();
-    const visitList = new Queue(); // need to implement queue
+    const visitList = new Queue();
 
     visitList.add(frst);
 
