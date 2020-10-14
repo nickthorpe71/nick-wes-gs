@@ -134,3 +134,5 @@ console.log(bfsFromFirst.next().value.value); // 1
 console.log(bfsFromFirst.next().value.value); // 2
 console.log(bfsFromFirst.next().value.value); // 3
 console.log(bfsFromFirst.next().value.value); // 4
+
+export default Graph;
