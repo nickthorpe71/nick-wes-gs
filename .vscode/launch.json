@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\9-13-2020-Problems-num14.js"
+      "program": "${workspaceFolder}\\10-26-2020-1kyu-square-sums.js"
     }
   ]
 }

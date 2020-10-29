@@ -14,7 +14,7 @@ const main = (n) => {
     graph.push(new _GraphNode(i));
   }
 
-  let start;
+  let starts = [];
 
   for (let j = 0; j < n; j++) {
     for (let k = 0; k < perfectSquares.length; k++) {
@@ -23,11 +23,18 @@ const main = (n) => {
     }
 
     if (graph[j].complements.length === 1)
-      start = graph[j].value;
+      starts.push(graph[j].value);
+  }
+
+  if(starts.length > 2) {
+    return 'No such array';
   }
 
 
+
+
   console.log(graph);
+  console.log(starts);
 };
 
 class _GraphNode {
@@ -40,3 +47,18 @@ class _GraphNode {
 
 
 main(15);
+console.log('_________________________________');
+main(16);
+console.log('_________________________________');
+main(17);
+console.log('_________________________________');
+main(18);
+console.log('_________________________________');
+main(19);
+console.log('_________________________________');
+main(20);
+console.log('_________________________________');
+main(21);
+console.log('_________________________________');
+main(22);
+console.log('_________________________________');
