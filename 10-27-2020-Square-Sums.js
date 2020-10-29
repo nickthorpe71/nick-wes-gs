@@ -31,3 +31,22 @@ function square_sums_row(n) {
 }
 
 console.log(square_sums_row(15));
+
+// console.log(square_sums_row(15));
+// console.log('_________________________________');
+// console.log(square_sums_row(16));
+// console.log('_________________________________');
+// console.log(square_sums_row(17));
+// console.log('_________________________________');
+// console.log(square_sums_row(18));
+// console.log('_________________________________');
+// console.log(square_sums_row(19));
+// console.log('_________________________________');
+// console.log(square_sums_row(20));
+// console.log('_________________________________');
+// console.log(square_sums_row(21));
+// console.log('_________________________________');
+// console.log(square_sums_row(22));
+// console.log('_________________________________');
+console.log(square_sums_row(54));
+console.log('_________________________________');
