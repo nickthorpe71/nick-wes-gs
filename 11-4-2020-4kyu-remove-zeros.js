@@ -13,6 +13,21 @@ function removeZeros(array) {
 
   let numberOfZeros = 0;
 
+  for (let i = 0; i < array.length; i++)
+    if (array[i] === 0 || array[i] === '0')
+      numberOfZeros++;
+
+  let tempZeroCount = 0;
+  for (let k = ((array.length) - numberOfZeros); k < array.length; k++) {
+    if (array[k] === 0 || array[k] === '0') {
+      tempZeroCount++;
+    }
+  }
+  if (tempZeroCount === numberOfZeros) {
+    return array;
+  }
+
+
   for (let i = 0; i < array.length; i++) {
     let zeroHolder;
 
@@ -24,10 +39,23 @@ function removeZeros(array) {
       }
 
       array[array.length - 1] = zeroHolder;
-      numberOfZeros++;
 
-      if (i < array.length - numberOfZeros && (array[i] === 0 || array[i] === '0'))
+      if (i < array.length - numberOfZeros && (array[i] === 0 || array[i] === '0')) {
         i--;
+      } else if (array[i] !== 0 && array[i] !== '0') {
+        let zeroCount = 0;
+        let indexCount = 0;
+        for (let k = i + 1; k < array.length; k++) {
+          indexCount++;
+          if (array[k] === 0 || array[k] === '0') {
+            zeroCount++;
+          }
+        }
+        if (zeroCount === numberOfZeros && indexCount === (array.length - numberOfZeros) + 1) {
+          console.log('exit early');
+          return array;
+        }
+      }
     }
   }
 
@@ -38,7 +66,7 @@ function removeZeros(array) {
 var input = [7, 2, 3, 0, 4, 6, 0, 0, 13, 0, 78, 0, 0, 19, 14],
   solution = [7, 2, 3, 4, 6, 13, 78, 19, 14, 0, 0, 0, 0, 0, 0];
 
-var input2 = [0, '0', 1, '0', 0],
-  solution2 = [1, '0', 0, 0, '0'];
+var input2 = ['0', 0, 1, null, '5', '2', 8, 6, null, false],
+  solution2 = [1, null, '5', '2', 8, 6, null, false, '0', 0];
 
 console.log(removeZeros(input2));
