@@ -8,6 +8,7 @@
 // to use any Array or Object prototype methods such as .shift(), .push(), etc
 
 // the correctly sorted array should be returned.
+// https://www.codewars.com/kata/52aae14aa7fd03d57400058f/train/javascript
 
 function removeZeros(array) {
 
