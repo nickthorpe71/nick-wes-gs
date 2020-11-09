@@ -32,4 +32,14 @@ function trumpDetector(trumpySpeech) {
   return Number((totalExtraVowels / numberBaseVowels).toFixed(2));
 }
 
-console.log(trumpDetector("America NUUUUUKEEEE Oooobaaaamaaaaa"));
+//This function should return n!
+function factorial(n) {
+  if (n < 0)
+    return null;
+  if (n <= 1)
+    return 1;
+
+  return factorial(n - 1) * n;
+}
+
+console.log(factorial(5));
