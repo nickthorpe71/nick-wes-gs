@@ -4,7 +4,19 @@
 function square_sums_row(n) {
     const graphMap = populateGraph(n);
 
+    // Implement Hamiltonian Path algorithm
 
+    // Example from SO:
+    // while(paths.length>0){
+    //     let tempPath = [];
+    //     for(let path of paths){
+    //      const nextSteps = vertexes.find(({vertex}) => vertex == path[path.length-1]).peers.filter(v => !path.includes(v));
+    //      if(!nextSteps.length) continue;
+    //      else if(path.length == n-1) return [...path, nextSteps[0]];
+    //      else tempPath.push(...nextSteps.map(v => [...path,v]));
+    //     }
+    //     paths = tempPath;
+    // }
 
     return graphMap;
 }
