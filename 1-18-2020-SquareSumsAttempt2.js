@@ -1,6 +1,19 @@
-
+// Check this for dynamic programming approach to improve algorithm performance: https://codeforces.com/blog/entry/337
+// Simple example for Hamiltonian Path: https://stackoverflow.com/questions/58186972/hamiltonian-path
 
 function square_sums_row(n) {
+    const graphMap = populateGraph(n);
+
+
+
+    return graphMap;
+}
+
+/**
+ * @param {Number} n 
+ * @returns {hashMap} map containing keys 1 - n. Each value is a Node in a graph where all nodes connect to nodes that when added produce a square number.
+ */
+function populateGraph(n) {
     const squares = getSquares(n);
     const graphMap = createGraph(n);
 
