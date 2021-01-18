@@ -2,25 +2,28 @@
 // Simple example for Hamiltonian Path: https://stackoverflow.com/questions/58186972/hamiltonian-path
 
 function square_sums_row(n) {
-    let result = hamiltonian(populateGraph(n), n);
+    let graph = populateGraph(n);
+    let result = hamiltonian(graph, n);
     console.log('result', result);
 
-    return graphMap;
+    return populateGraph(n);
 }
 
 function hamiltonian(vertexes, start) {
-    let n = vertexes.size;
+    let n = vertexes.length;
     let paths = [[start]];
     while (paths.length > 0) {
         let tempPath = [];
         for (let path of paths) {
-            const nextSteps = vertexes.find(({ vertex }) => vertex == path[path.length - 1]).peers.filter(v => !path.includes(v));
+            const next = vertexes.find(node => node.value == path[path.length - 1]);
+            const nextSteps = next.peers.filter(v => !path.includes(v.value));
             if (!nextSteps.length) continue;
-            else if (path.length == n - 1) return [...path, nextSteps[0]];
-            else nextSteps.forEach(step => tempPath.push([...path, step]));
+            else if (path.length == n - 1) return [...path, nextSteps[0].value];
+            else nextSteps.forEach(step => tempPath.push([...path, step.value]));
         }
         paths = tempPath;
     }
+    return paths;
 }
 
 /**
@@ -29,28 +32,28 @@ function hamiltonian(vertexes, start) {
  */
 function populateGraph(n) {
     const squares = getSquares(n);
-    const graphMap = createGraph(n);
+    const graphArr = createGraphArr(n);
 
     for (let i = 1; i <= n; i++) {
         for (let j = 1; j <= n; j++) {
             if (squares.includes(i + j) && j != i) {
-                graphMap[i].edges.push(graphMap[j]);
+                graphArr[i - 1].peers.push(graphArr[j - 1]);
             }
         }
     }
 
-    return graphMap;
+    return graphArr;
 }
 
 /**
  * @param {Number} n 
- * @returns {hashMap} map containing keys 1 - n. Each has a starting node with no edges
+ * @returns {hashMap} map containing keys 1 - n. Each has a starting node with no peers
  */
 function createGraphArr(n) {
-    let arr = [];
+    let arr = [n];
 
-    for (let i = 1; i <= n; i++) {
-        arr[i] = new Node(i);
+    for (let i = 0; i < n; i++) {
+        arr[i] = new Node(i + 1);
     }
 
     return arr;
@@ -75,11 +78,11 @@ function getSquares(n) {
 class Node {
     constructor(value) {
         this.value = value;
-        this.edges = [];
+        this.peers = [];
     }
 
     addEdge(node) {
-        edges.push(node);
+        peers.push(node);
     }
 }
 
