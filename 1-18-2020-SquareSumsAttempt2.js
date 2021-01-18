@@ -2,23 +2,25 @@
 // Simple example for Hamiltonian Path: https://stackoverflow.com/questions/58186972/hamiltonian-path
 
 function square_sums_row(n) {
-    const graphMap = populateGraph(n);
-
-    // Implement Hamiltonian Path algorithm
-
-    // Example from SO:
-    // while(paths.length>0){
-    //     let tempPath = [];
-    //     for(let path of paths){
-    //      const nextSteps = vertexes.find(({vertex}) => vertex == path[path.length-1]).peers.filter(v => !path.includes(v));
-    //      if(!nextSteps.length) continue;
-    //      else if(path.length == n-1) return [...path, nextSteps[0]];
-    //      else tempPath.push(...nextSteps.map(v => [...path,v]));
-    //     }
-    //     paths = tempPath;
-    // }
+    let result = hamiltonian(populateGraph(n), n);
+    console.log('result', result);
 
     return graphMap;
+}
+
+function hamiltonian(vertexes, start) {
+    let n = vertexes.size;
+    let paths = [[start]];
+    while (paths.length > 0) {
+        let tempPath = [];
+        for (let path of paths) {
+            const nextSteps = vertexes.find(({ vertex }) => vertex == path[path.length - 1]).peers.filter(v => !path.includes(v));
+            if (!nextSteps.length) continue;
+            else if (path.length == n - 1) return [...path, nextSteps[0]];
+            else nextSteps.forEach(step => tempPath.push([...path, step]));
+        }
+        paths = tempPath;
+    }
 }
 
 /**
@@ -32,7 +34,7 @@ function populateGraph(n) {
     for (let i = 1; i <= n; i++) {
         for (let j = 1; j <= n; j++) {
             if (squares.includes(i + j) && j != i) {
-                graphMap.get(i).edges.push(graphMap.get(j));
+                graphMap[i].edges.push(graphMap[j]);
             }
         }
     }
@@ -44,14 +46,14 @@ function populateGraph(n) {
  * @param {Number} n 
  * @returns {hashMap} map containing keys 1 - n. Each has a starting node with no edges
  */
-function createGraph(n) {
-    let map = new Map();
+function createGraphArr(n) {
+    let arr = [];
 
     for (let i = 1; i <= n; i++) {
-        map.set(i, new Node(i));
+        arr[i] = new Node(i);
     }
 
-    return map;
+    return arr;
 }
 
 /**
