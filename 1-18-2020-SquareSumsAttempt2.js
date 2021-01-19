@@ -14,7 +14,7 @@ function hamiltonian(vertexes, start) {
     while (paths.length > 0) {
         let tempPath = [];
         for (let path of paths) {
-            const next = vertexes.find(node => node.value == path[path.length - 1]);
+            const next = vertexes.find(node => node.value == path[path.length - 1]).peers.filter(v => !path.includes(v.value));
             let nextSteps = [];
             if (next) {
                 nextSteps = next.peers.filter(v => !path.includes(v.value));
@@ -100,4 +100,4 @@ class Node {
     }
 }
 
-console.log(square_sums_row(9));
+console.log(square_sums_row(50));
