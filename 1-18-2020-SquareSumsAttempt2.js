@@ -3,10 +3,9 @@
 
 function square_sums_row(n) {
     let graph = populateGraph(n);
-    let result = hamiltonian(graph, n);
-    console.log('result', result);
+    let result = hamiltonian(graph, leastPeers(graph));
 
-    return populateGraph(n);
+    return result.length > 0 ? result : false;
 }
 
 function hamiltonian(vertexes, start) {
@@ -16,7 +15,10 @@ function hamiltonian(vertexes, start) {
         let tempPath = [];
         for (let path of paths) {
             const next = vertexes.find(node => node.value == path[path.length - 1]);
-            const nextSteps = next.peers.filter(v => !path.includes(v.value));
+            let nextSteps = [];
+            if (next) {
+                nextSteps = next.peers.filter(v => !path.includes(v.value));
+            }
             if (!nextSteps.length) continue;
             else if (path.length == n - 1) return [...path, nextSteps[0].value];
             else nextSteps.forEach(step => tempPath.push([...path, step.value]));
@@ -24,6 +26,18 @@ function hamiltonian(vertexes, start) {
         paths = tempPath;
     }
     return paths;
+}
+
+function leastPeers(graphArr) {
+    let lowest = 10000;
+    let selected = 0;
+    for (let node of graphArr) {
+        if (node.peers.length > 0 && node.peers.length < lowest) {
+            lowest = node.peers.length;
+            selected = node.value;
+        }
+    }
+    return selected;
 }
 
 /**
@@ -86,4 +100,4 @@ class Node {
     }
 }
 
-console.log(square_sums_row(15));
+console.log(square_sums_row(9));
