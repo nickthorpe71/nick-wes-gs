@@ -1,4 +1,5 @@
 // revise with : https://www.youtube.com/watch?v=jGRRBJlNtwI&ab_channel=FitCoder
+// need to take tests from code wars and implement them locally
 
 let path = [];
 let visited = [];
